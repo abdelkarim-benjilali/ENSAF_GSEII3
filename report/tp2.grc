@@ -1,0 +1,282 @@
+options:
+  parameters:
+    author: ''
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: tp2
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: tp2
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: gain
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: gain
+    min_len: '200'
+    orient: Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '1'
+    stop: '100'
+    value: '50'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [10, 94]
+    rotation: 0
+    state: true
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '32000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: blocks_complex_to_mag_squared_0
+  id: blocks_complex_to_mag_squared
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: longueur.longueur()
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [805, 250]
+    rotation: 0
+    state: true
+- name: blocks_file_sink_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: F:\karim\s5\traitement de signal de parole\tp2\file2.wav
+    type: float
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1353, 211]
+    rotation: 0
+    state: true
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: gain
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [362, 248]
+    rotation: 0
+    state: true
+- name: blocks_multiply_const_vxx_1
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: gain
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: longueur.longueur()
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [742, 376]
+    rotation: 0
+    state: disabled
+- name: blocks_nlog10_ff_0
+  id: blocks_nlog10_ff
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    k: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    n: '1'
+    vlen: longueur.longueur()
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [968, 106]
+    rotation: 0
+    state: enabled
+- name: blocks_stream_to_vector_0
+  id: blocks_stream_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: longueur.longueur()
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [495, 54]
+    rotation: 0
+    state: true
+- name: blocks_throttle_0
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [190, 248]
+    rotation: 0
+    state: true
+- name: blocks_vector_to_stream_0
+  id: blocks_vector_to_stream
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: longueur.longueur()
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1150, 248]
+    rotation: 0
+    state: true
+- name: blocks_wavfile_source_0
+  id: blocks_wavfile_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    file: F:\karim\s5\traitement de signal de parole\tp1\file.wav
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nchan: '1'
+    repeat: 'False'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [-6, 240]
+    rotation: 0
+    state: true
+- name: fft_vxx_0
+  id: fft_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    fft_size: longueur.longueur()
+    forward: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nthreads: '1'
+    shift: 'True'
+    type: float
+    window: window.blackmanharris(1024)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [564, 230]
+    rotation: 0
+    state: true
+- name: longueur
+  id: epy_module
+  parameters:
+    alias: ''
+    comment: ''
+    source_code: "# this module will be imported in the into your flowgraph\r\nfrom\
+      \ os.path import dirname, join as pjoin\r\nfrom scipy.io import wavfile\r\n\
+      import scipy.io\r\ndef longueur():\r\n\t\r\n\tdata_dir = pjoin(dirname(scipy.io.__file__),\
+      \ 'F:', '/karim/s5/traitement de signal de parole/tp1')\r\n\twav_fname = pjoin(data_dir,\
+      \ 'file.wav')\r\n\r\n\tsamplerate, data = wavfile.read(wav_fname)\r\n\t#print(\"\
+      number of channels = {data.shape[1]}\")\r\n\t#print(data.shape)\r\n\tlength\
+      \ = data.shape[0] / samplerate\r\n\t#print(\"length\")\r\n\t#print(length)\r\
+      \n\t#print(samplerate)\r\n\t#length = 0.01s\r\n\treturn samplerate "
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [454, 339]
+    rotation: 0
+    state: true
+
+connections:
+- [blocks_complex_to_mag_squared_0, '0', blocks_nlog10_ff_0, '0']
+- [blocks_multiply_const_vxx_0, '0', blocks_stream_to_vector_0, '0']
+- [blocks_nlog10_ff_0, '0', blocks_vector_to_stream_0, '0']
+- [blocks_stream_to_vector_0, '0', fft_vxx_0, '0']
+- [blocks_throttle_0, '0', blocks_multiply_const_vxx_0, '0']
+- [blocks_vector_to_stream_0, '0', blocks_file_sink_0, '0']
+- [blocks_wavfile_source_0, '0', blocks_throttle_0, '0']
+- [fft_vxx_0, '0', blocks_complex_to_mag_squared_0, '0']
+
+metadata:
+  file_format: 1
